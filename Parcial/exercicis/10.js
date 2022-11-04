@@ -1,0 +1,7 @@
+/*A la Wikipedia ens diuen:
+ 
+setjmp: Sets up the local jmp_buf buffer and initializes it for the jump. This routine saves the program's calling environment in the environment buffer specified by the env argument for later use by longjmp. If the return is from a direct invocation, setjmp returns 0. If the return is from a call to longjmp, setjmp returns a nonzero value.
+
+longjmp: Restores the context of the environment buffer env that was saved by invocation of the setjmp routine in the same invocation of the program. Invoking longjmp from a nested signal handler is undefined. The value specified by value is passed from longjmp to setjmp. After longjmp is completed, program execution continues as if the corresponding invocation of setjmp had just returned. If the value passed to longjmp is 0, setjmp will behave as if it had returned 1, otherwise, it will behave as if it had returned value.
+
+Si ho comparem amb les continuacions completes que ens proporcionen Pharo, Scheme, Javascript, Standard ML i altres llenguatges de programació veiem que setjmp/longjmp no són més que un cas especial, on suposem que el context al que tornem encara existeix, ja que no es guarda la pila d’execució completa per restaurar-la després: If the function in which setjmp was called returns, it is no longer possible to safely use longjmp with the corresponding jmp_buf object. This is because the stack frame is invalidated when the function returns.*/
