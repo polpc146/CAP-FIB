@@ -1,0 +1,1 @@
+4 timesRepeat: [ Transcript show: 'Hello World'; cr ]

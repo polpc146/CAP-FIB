@@ -1,0 +1,3 @@
+'Hola, món' - ByteString
+#HolaMón - ByteSymbol
+#($H $o $l $a) - Array

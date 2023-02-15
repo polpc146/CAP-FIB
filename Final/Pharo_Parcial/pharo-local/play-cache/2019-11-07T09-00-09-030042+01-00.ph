@@ -1,0 +1,1 @@
+| n |n := 0.[ n < 10 ] whileTrueTardis: [ n traceCr. n := n + 1 ]

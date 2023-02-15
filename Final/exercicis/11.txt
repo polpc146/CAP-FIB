@@ -1,0 +1,77 @@
+#mig - donada una SequenceableCollection retorna l'element del mig. - en SequenceableCollection
+
+mig
+	^ self at: (self size / 2) ceiling
+
+• #swap:with: - que té dos indexos i i j com a arguments i canvia l'element i pel j i
+el j per l' i a la col·lecció receptora. - en SequenceableCollection
+
+swap: i with: j
+	| aux |
+	aux := self at: j.
+	self at: j put: (self at: i).
+	self at: i put: aux
+
+#negated - canvia el signe de tots els elements de la col·lecció. - en IntegerArray
+
+negated
+	^ self copy *= -1
+
+#copyWithFirst: - que retorna una col·lecció idèntica a la receptora, però amb
+l'argument inserit en primer lloc. - en SequenceableCollection
+
+copyWithFirst: newElement 
+	"Answer a copy of the receiver that is 1 bigger than the receiver with newElement as the first element."
+
+	| newIC |
+	newIC := self species ofSize: self size + 1.
+	newIC 
+		replaceFrom: 2
+		to: self size + 1
+		with: self
+		startingAt: 1.
+	newIC at: 1 put: newElement.
+	^ newIC
+
+#inject:into: - Ja sabeu com funciona, ara, sense mirar la implementació de
+Pharo, proveu d'implementar-lo vosaltres. - en Collection
+
+inject: thisValue into: binaryBlock 
+	"Accumulate a running value associated with evaluating the argument, 
+	binaryBlock, with the current value of the argument, thisValue, and the 
+	receiver as block arguments. For instance, to sum the numeric elements 
+	of a collection, aCollection inject: 0 into: [:subTotal :next | subTotal + 
+	next]."
+
+	| nextValue |
+	nextValue := thisValue.
+	self do: [:each | nextValue := binaryBlock value: nextValue value: each].
+	^nextValue
+
+#anySatisfy: - Retornarà true si existeix al menys un element dins la col·lecció
+tal que el bloc (d'un paràmetre) que passem com a argument retorna true quan
+l'apliquem a l'element. - en Collection
+
+anySatisfy: aBlock
+	"Evaluate aBlock with the elements of the receiver.
+	If aBlock returns true for any element return true.
+	Otherwise return false."
+
+	self do: [:each | (aBlock value: each) ifTrue: [^ true]].
+	^ false
+
+#atAll: - Retornarà una col·lecció amb els elements corresponents a les posicions
+enumerades dins la col·lecció que passem com a argument. P.ex: #(a b c d)
+atAll: #(2 4) tindrà com a resultat #(b d). - en SequenceableCollection
+
+atAll: indexArray
+	"Answer a new collection like the receiver which contains all elements
+	of the receiver at the indices of indexArray."
+	"#('one' 'two' 'three' 'four') atAll: #(3 2 4)"
+
+	| newCollection |
+	newCollection := self species ofSize: indexArray size.
+	1 to: indexArray size do:
+		[:index |
+		newCollection at: index put: (self at: (indexArray at: index))].
+	^ newCollection

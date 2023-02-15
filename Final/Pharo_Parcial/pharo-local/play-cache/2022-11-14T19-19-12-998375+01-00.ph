@@ -1,0 +1,1 @@
+| arr |arr := #(1 2 3 4).arr aplica: [ :x | x ]

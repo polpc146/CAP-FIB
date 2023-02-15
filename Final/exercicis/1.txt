@@ -1,0 +1,11 @@
+1 - El lligam dinàmic és una propietat que té Smalltalk per POO que fa que cada assignació es fa per referència.
+2 - Si.
+3 - El missatge és la crida al mètode.
+4 - No.
+5 - Si, les assignacions.
+6 - Object (o ProtoObject).
+7 - Els mètodes són publics, però per convecnió poden ser privats. Es poden posar en un protocol que li anomenem private.
+8 - És una sèrie de pas de misstages seguits al mateix receptor separats per ;. Si no especefiquem res el valor és el de l'últim missatge, però es pot posar yourself per retornar l'objecte receptor.
+9 - subclassResponsibility
+10 - self es refereix a l'objecte que crida el missatge i super referencia del pare cap a dalt.
+11 - Quan es crida a la constructora o new per defecte.

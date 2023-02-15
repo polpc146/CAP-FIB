@@ -1,0 +1,51 @@
+· Compteu el nombre d'elements d'una taula (Array) - en Array
+
+arraySize
+	^ self size
+
+· Fer la mitjana d'una taula
+
+mitjana
+	| sum |
+	sum := 0.
+	^ self isEmpty
+		ifTrue: [ 'array buit' ]
+		ifFalse: [ self do: [ :each | sum := sum + each ].
+					  sum / self size ]
+
+· Construir una taula T a partir d'una altra A on Ti = A2i-1 + A2i - en SequenceableCollection - en IntegerArray
+
+novaT
+	| newT newSize |
+	newSize := self size // 2.
+	newT := self class ofSize: newSize .
+	(1 to: newSize) do: 
+		[ :i | newT at: i put: ((self at: 2*i-1) + (self at: 2*i)) ].
+	^ newT
+
+· • A partir d'una col·lecció C retornar la seva inversa - en SequenceableCollection
+
+inversa
+	| newColl collSize |
+	collSize := self size.
+	newColl := self class ofSize: collSize.
+	(1 to: collSize) do:
+		[ :i | newColl at: i put: (self at: collSize-i+1) ].
+	^ newColl 
+
+· Donats un bloc amb un paràmetre i una col·lecció C, cal retornar el resultat d'aplicar el
+bloc a tots els elements de la col·lecció - en SequenceableCollection
+
+aplica: aBloc
+	(1 to: self size) do:
+		[ :i | self at: i put: (aBloc value: (self at: i)) ] 
+
+· Donat un element i una col·lecció, afegir l'element a la col·lecció només si aquest no hi
+és - en OrderedCollection
+
+afegeix: anElement
+	^ (self includes: anElement)
+		ifTrue: ['ja existeix a la col·lecció']
+		ifFalse: [ self add: anElement.
+					  self]
+

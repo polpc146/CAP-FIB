@@ -1,0 +1,1 @@
+| arr arr2 arr2Size i|arr := #(1 2 3 4).i := 1.arr size < 2	ifTrue: [ 'array massa petit' ]	ifFalse: [ arr2Size := (arr size / 2) floor.				  1 to: arr2Size do: [ arr2 at: i put: [ (arr at: 2*i-1) + 				               (arr at: 2*i) ]. 				  i := i + 1.].				  arr2 ]

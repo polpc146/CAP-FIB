@@ -1,0 +1,1 @@
+| arr |arr := #(1 2 9 7) asOrderedCollection .arr afegeix: 5

@@ -1,0 +1,4 @@
+· ((5 + 6) + (2 * 5) + (2 - 1)) -> (5 + 6 + (2 * 5) + 2 - 1)
+· (x isNil) ifTrue: [...] ifFalse: [...] -> x isNil ifTrue: [...] ifFalse: [...]
+· (x = y) ifTrue: [...] -> (x = y) ifTrue: [...]
+· (x includes: y) ifTrue: [...] -> (x includes: y) ifTrue: [...]
